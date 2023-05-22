@@ -34,3 +34,47 @@ void draw() {
   mediumButton.display();
   hardButton.display();
 }
+void mouseClicked() {
+  // Check if a button is clicked
+  if (easyButton.isClicked()) {
+    println("Easy button clicked!");
+    // Handle easy button action
+  } else if (mediumButton.isClicked()) {
+    println("Medium button clicked!");
+    // Handle medium button action
+  } else if (hardButton.isClicked()) {
+    println("Hard button clicked!");
+    // Handle hard button action
+  }
+}
+
+class Button {
+  float x, y;  // Position of the button
+  float w = 100, h = 50;  // Width and height of the button
+  String label;  // Text label for the button
+  
+  Button(float x, float y, String label) {
+    this.x = x;
+    this.y = y;
+    this.label = label;
+  }
+  
+  void display() {
+    // Draw the button
+    fill(255);
+    rectMode(CENTER);
+    rect(x, y, w, h);
+    
+    // Display the label
+    fill(0);
+    textSize(18);
+    textAlign(CENTER, CENTER);
+    text(label, x, y);
+  }
+  
+  boolean isClicked() {
+    // Check if the button is clicked
+    return mouseX >= x - w/2 && mouseX <= x + w/2 &&
+           mouseY >= y - h/2 && mouseY <= y + h/2;
+  }
+}
