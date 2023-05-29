@@ -7,6 +7,10 @@ Button mediumButton;
 Button hardButton;
 
 Level easy = new Level();
+Level medium = new Level();
+Level hard = new Level();
+
+String currentLevel = "";
 
 void setup() {
   size(540, 720);
@@ -37,19 +41,29 @@ void draw() {
   mediumButton.display();
   hardButton.display();
   
-  easy.easy();
+  if (currentLevel.equals("easy")) {
+    // Display easy level interface
+    easy.easy();
+  } else if (currentLevel.equals("medium")) {
+    // Display medium level interface
+    //medium.medium();
+  } else if (currentLevel.equals("hard")) {
+    // Display hard level interface
+    hard.hard();
+  }
+
 }
 
 void mouseClicked() {
   // Check if a button is clicked
   if (easyButton.isClicked()) {
-    easy.easy();
+    currentLevel = "easy";
     // Handle easy button action
   } else if (mediumButton.isClicked()) {
-    println("Medium button clicked!");
+    //currentLevel = "medium";
     // Handle medium button action
   } else if (hardButton.isClicked()) {
-    println("Hard button clicked!");
+    currentLevel = "hard";
     // Handle hard button action
   }
 }
