@@ -6,6 +6,8 @@ Button easyButton;
 Button mediumButton;
 Button hardButton;
 
+Level easy = new Level();
+
 void setup() {
   size(540, 720);
   font = createFont("Monaco", fontSize);
@@ -18,6 +20,7 @@ void setup() {
   // Set initial position of the text
   textY = height/6;
   textX = width/2;
+  
 }
 
 void draw() {
@@ -33,12 +36,14 @@ void draw() {
   easyButton.display();
   mediumButton.display();
   hardButton.display();
+  
+  easy.easy();
 }
 
 void mouseClicked() {
   // Check if a button is clicked
   if (easyButton.isClicked()) {
-    println("Easy button clicked!");
+    easy.easy();
     // Handle easy button action
   } else if (mediumButton.isClicked()) {
     println("Medium button clicked!");
