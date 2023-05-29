@@ -28,11 +28,20 @@ public class Level {
       for (int j = 0; j < tilesX; j++) {
           fill(grid[i][j]);
           rect(j*tileSizeX + offsetX, i*tileSizeY + offsetY, tileSizeX, tileSizeY);
-      }
     }
-        
+    
+     // Calculate the circle size
+     int circleSize = 10;
+    // float circleX = x + tileSizeX * 0.5; // Calculate the x-coordinate of the circle center
+    // float circleY = y + tileSizeY * 0.5; // Calculate the y-coordinate of the circle center
+    for (int x = 0; x < tilesY*2; x += 2) {
+      for (int y = 0; y < tilesX*2; y += 4) {
+          fill(0);
+          circle(tileSizeX * 0.5 * y + offsetX, tileSizeY * 0.5 * x + offsetY, circleSize);
+      }    
+    }
+   }
   }
-  
 
  void hard() {
    grid2 = new color[][] { {#A7C8AB, #A1C9B1, #9CC6B8, #9AC7C0, #96C3C1, #99C7CC, #A4CCCC, #AFD0CF, #B7D4D0, #BFD6D2, #C0D4D0},
@@ -58,7 +67,12 @@ public class Level {
           rect(j*tileSizeX + offsetX, i*tileSizeY + offsetY, tileSizeX, tileSizeY);
       }
     }
-        
+    int circleSize = 10;
+    fill(0);
+    circle(offsetX, offsetY, circleSize);
+    circle(width - offsetX, offsetY, circleSize);
+    circle(width - offsetX, height - offsetY, circleSize);
+    circle(offsetX, height - offsetY, circleSize);
   }
    
  }
