@@ -46,7 +46,7 @@ void draw() {
     easy.easy();
   } else if (currentLevel.equals("medium")) {
     // Display medium level interface
-    //medium.medium();
+    medium.medium();
   } else if (currentLevel.equals("hard")) {
     // Display hard level interface
     hard.hard();
@@ -60,7 +60,7 @@ void mouseClicked() {
     currentLevel = "easy";
     // Handle easy button action
   } else if (mediumButton.isClicked()) {
-    //currentLevel = "medium";
+    currentLevel = "medium";
     // Handle medium button action
   } else if (hardButton.isClicked()) {
     currentLevel = "hard";

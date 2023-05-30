@@ -1,5 +1,6 @@
 public class Level {
   color[][] grid;
+  color[][]grid1;
   color[][] grid2;
   
 
@@ -42,7 +43,43 @@ public class Level {
     }
    }
   }
+  
+  void medium(){
+    grid1 = new color[][] {{#C5C1BF, #C6C7C1, #C9CDC6, #CBD5CA, #CDDACE, #CFE3D2, #D2E9D7, #D3EFDA, #D7F8DE},
+                           {#BEBBC2, #C1C2C5, #C3C7C9, #C6CECD, #C9D2D1, #CBD9D6, #CFE0D8, #D2E6DD, #D4EDE2},
+                           {#B6B8C4, #B9BCC8, #BDC2CD, #C1C6D0, #C4CDD5, #C8D1D7, #CBD6DB, #CEDCDF, #D2E1E2},
+                           {#B0B4C8, #B4B8CC, #B8BBD0, #BBC0D3, #BFC4D7, #C4CADA, #C8CEDE, #CCD2E2, #D0D6E4},
+                           {#A9B0CD, #ADB2CF, #B2B7D5, #B7B9D6, #BCBEDB, #C0C0DE, #C5C4E0, #C9C8E4, #CECCE7},
+                           {#A2ABD2, #A7ADD4, #ACB1D6, #B1B2D9, #B9B6DE, #BDB9E1, #C3BCE3, #C8BFE7, #CEC2EB},
+                           {#9CA7D5, #A1A9D8, #A6ABD9, #ADADDD, #B3AEE0, #B9B1E4, #BEB2E7, #C6B5E9, #CCB6EE},
+                           {#95A3D4, #9AA4DA, #A1A4DC, #A8A6E0, #AEA7E3, #B5A8E6, #BBA9E9, #C3A9EC, #CAA9F3},
+                           {#8EA0DC, #949EDF, #9B9FE1, #A3A0E4, #AAA0E7, #B2A0E9, #B9A0EC, #C1A1EF, #C8A1F2},
+                           {#869BDF, #8E9AE2, #969AE5, #9D99E7, #A699EA, #AF98ED, #B898F0, #BE97F2, #C897F5},
+                           {#7F98E2, #8795E5, #9094E8, #9892EA, #A191ED, #AB8FEF, #B48DF3, #BE97F2, #C58CFD},
+   };
+   int tilesX = 9;
+   int tilesY = 11;
+   int tileSizeX = width/tilesX;
+   int tileSizeY = height/tilesY;
+   int offsetX = tileSizeX/2;
+   int offsetY = tileSizeY/2;
+   int dotSize = 10;
+   
+    for (int i = 0; i < tilesY; i++) {
+      for (int j = 0; j < tilesX; j++) {
+          fill(grid1[i][j]);
+          rect(j*tileSizeX + offsetX, i*tileSizeY + offsetY, tileSizeX, tileSizeY);
+          
+          if (j == 0 || j == tilesX - 1) {
+        fill(0);  // Black color
+        circle(tileSizeX  * j + offsetX, tileSizeY  * i + offsetY, dotSize);
 
+
+      }
+      }
+    }
+  }
+  
  void hard() {
    grid2 = new color[][] { {#A7C8AB, #A1C9B1, #9CC6B8, #9AC7C0, #96C3C1, #99C7CC, #A4CCCC, #AFD0CF, #B7D4D0, #BFD6D2, #C0D4D0},
                            {#94C3B0, #90C2B7, #8DC2BE, #8BC1C3, #8AC2C9, #8BC3D0, #9AC8D1, #A6CDD4, #B0D1D7, #B9D5D7, #B9CDCE},
