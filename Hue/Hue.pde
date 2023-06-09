@@ -140,7 +140,6 @@ void setup() {
           randomIndex = (int) (Math.random()*randomColorGrid2[i].length);
           randomColor = randomColorGrid2[i][randomIndex];
           }
-          
           usedColors.add(randomColor);
           gridColor2[i][j] = randomColor;
           
@@ -180,7 +179,6 @@ void setup() {
           randomIndex = (int) (Math.random()*randomColorGrid3[i].length);
           randomColor = randomColorGrid3[i][randomIndex];
           }
-          
           usedColors.add(randomColor);
           gridColor3[i][j] = randomColor;
           
@@ -225,264 +223,261 @@ boolean isSolved(String level){
 
 
 void draw() {
-  //background(0);  // Black background
-  
-  //// Display animated colorful text
-  //fill(random(255), random(255), random(255));
-  //textSize(fontSize);
-  //textAlign(CENTER, CENTER);
-  //text("I Love Hue 2.0", textX, textY);
-  
-  //// Display the buttons
-  //easyButton.display();
-  //goalEasy.display();
-  //mediumButton.display();
-  //goalMedium.display();
-  //hardButton.display();
-  //goalHard.display();
+    if (currentLevel.equals("home")) {
+        background(0); // Black background
 
-// home page
-  if (currentLevel.equals("home")) {
-     background(0);  // Black background
-  
-      // Display animated colorful text
-      fill(random(255), random(255), random(255));
-      textSize(fontSize);
-      textAlign(CENTER, CENTER);
-      text("I Love Hue 2.0", textX, textY);
-  
-      // Display the buttons
-      easyButton.display();
-      goalEasy.display();
-      mediumButton.display();
-      goalMedium.display();
-      hardButton.display();
-      goalHard.display();
-      System.out.println("test");
+        // Display animated colorful text
+        fill(random(255), random(255), random(255));
+        textSize(fontSize);
+        textAlign(CENTER, CENTER);
+        text("I Love Hue 2.0", textX, textY);
+
+        // Display the buttons
+        easyButton.display();
+        goalEasy.display();
+        mediumButton.display();
+        goalMedium.display();
+        hardButton.display();
+        goalHard.display();
+        System.out.println("test");
     }
-  
-  // Game Interfaces
-  if (currentLevel.equals("easy")) {  
-    // Easy level interface
-    for (int i = 0; i < tilesY1; i++) {
-      for (int j = 0; j < tilesX1; j++) {
-        fill(gridColor1[i][j]);
-        rect(j*tileSizeX1 + offsetX1, i*tileSizeY1 + offsetY1, tileSizeX1, tileSizeY1);
-      }
-    }
-    //mark guiding tiles
-    for (int x = 0; x < tilesY1*2; x += 2) {
-      for (int y = 0; y < tilesX1*2; y += 4) {
-          fill(0);
-          circle(tileSizeX1 * 0.5 * y + offsetX1, tileSizeY1 * 0.5 * x + offsetY1, circleSize);
-      }    
-    }
-    back.display2(); // return to home page
-    
-    if(isSolved("easy") == true && count > 1){
-      gameOver.display();
-      exit();
-    }
-  } else if (currentLevel.equals("easyGoal")) { 
-    // Goal of level easy
-      for (int i = 0; i < tilesY1; i++) {
-        for (int j = 0; j < tilesX1; j++) {
-          fill(randomColorGrid1[i][j]);
-          rect(j*tileSizeX1 + offsetX1, i*tileSizeY1 + offsetY1, tileSizeX1, tileSizeY1);
-        }  
-      }
-    //mark guiding tiles
-    for (int x = 0; x < tilesY1*2; x += 2) {
-      for (int y = 0; y < tilesX1*2; y += 4) {
-          fill(0);
-          circle(tileSizeX1 * 0.5 * y + offsetX1, tileSizeY1 * 0.5 * x + offsetY1, circleSize);
-      }    
-    }
-    back.display2(); // return to home page
-    
-  } else if (currentLevel.equals("medium")) {
-    // Medium level interface
-    for (int i = 0; i < tilesY2; i++) {
-      for (int j = 0; j < tilesX2; j++) {
-        fill(gridColor2[i][j]);
-        rect(j*tileSizeX2 + offsetX2, i*tileSizeY2 + offsetY2, tileSizeX2, tileSizeY2);
-        //mark guiding tiles
-        if (j == 0 || j == tilesX2 - 1) {
-            fill(0);  
-            circle(tileSizeX2  * j + offsetX2, tileSizeY2  * i + offsetY2, circleSize);
-        }
-      }
-    }
-      back.display2(); // return to homepage
-      if(isSolved("medium") == true){
-      gameOver.display();
-      exit();
-    }
-      
-    } else if (currentLevel.equals("mediumGoal")) {
-      // Goal of level medium
-      for (int i = 0; i < tilesY2; i++) {
-        for (int j = 0; j < tilesX2; j++) {
-          fill(randomColorGrid2[i][j]);
-          rect(j*tileSizeX2 + offsetX2, i*tileSizeY2 + offsetY2, tileSizeX2, tileSizeY2);
-          //mark guiding tiles
-          if (j == 0 || j == tilesX2 - 1) {
-            fill(0);  
-            circle(tileSizeX2  * j + offsetX2, tileSizeY2  * i + offsetY2, circleSize);
-          }
-        }  
-      }
-      back.display2(); // return to home page
-      
-    } else if (currentLevel.equals("hard")) {
-    // Hard level interface
-      for (int i = 0; i < tilesY3; i++) {
-        for (int j = 0; j < tilesX3; j++) {
-          fill(gridColor3[i][j]);
-          rect(j*tileSizeX3 + offsetX3, i*tileSizeY3 + offsetY3, tileSizeX3, tileSizeY3);
-          //mark guiding tiles
-          if ((i == 0 && j == 0) || (i == 0 && j == tilesX3 - 1) || (i == tilesY3 - 1 && j == 0) || (i == tilesY3 - 1 && j == tilesX3 - 1)) {
-            fill(0);
-            circle(tileSizeX3 * j + offsetX3, tileSizeY3 * i + offsetY3, circleSize);
-          }
-        }
-      }
-      back.display2(); // return to home page
-      if(isSolved("hard") == true){
-      gameOver.display();
-      exit();
-    }
-      
-    } else if (currentLevel.equals("hardGoal")) {
-      // Goal of level hard
-        for (int i = 0; i < tilesY3; i++) {
-          for (int j = 0; j < tilesX3; j++) {
-            fill(randomColorGrid3[i][j]);
-            rect(j*tileSizeX3 + offsetX3, i*tileSizeY3 + offsetY3, tileSizeX3, tileSizeY3);
-            //mark guiding tiles
-            if ((i == 0 && j == 0) || (i == 0 && j == tilesX3 - 1) || (i == tilesY3 - 1 && j == 0) || (i == tilesY3 - 1 && j == tilesX3 - 1)) {
-            fill(0);
-            circle(tileSizeX3 * j + offsetX3, tileSizeY3 * i + offsetY3, circleSize);
+
+    // Game Interfaces
+    if (currentLevel.equals("easy")) {
+        // Easy level interface
+        for (int i = 0; i < tilesY1; i++) {
+            for (int j = 0; j < tilesX1; j++) {
+                fill(gridColor1[i][j]);
+                rect(j * tileSizeX1 + offsetX1, i * tileSizeY1 + offsetY1, tileSizeX1, tileSizeY1);
             }
-          }  
+        }
+        //mark guiding tiles
+        for (int x = 0; x < tilesY1 * 2; x += 2) {
+            for (int y = 0; y < tilesX1 * 2; y += 4) {
+                fill(0);
+                circle(tileSizeX1 * 0.5 * y + offsetX1, tileSizeY1 * 0.5 * x + offsetY1, circleSize);
+            }
         }
         back.display2(); // return to home page
-    }    
+
+        if (isSolved("easy") == true && count > 1) {
+            gameOver.display();
+            exit();
+        }
+    } else if (currentLevel.equals("easyGoal")) {
+        // Goal of level easy
+        for (int i = 0; i < tilesY1; i++) {
+            for (int j = 0; j < tilesX1; j++) {
+                fill(randomColorGrid1[i][j]);
+                rect(j * tileSizeX1 + offsetX1, i * tileSizeY1 + offsetY1, tileSizeX1, tileSizeY1);
+            }
+        }
+        //mark guiding tiles
+        for (int x = 0; x < tilesY1 * 2; x += 2) {
+            for (int y = 0; y < tilesX1 * 2; y += 4) {
+                fill(0);
+                circle(tileSizeX1 * 0.5 * y + offsetX1, tileSizeY1 * 0.5 * x + offsetY1, circleSize);
+            }
+        }
+        back.display2(); // return to home page
+
+    } else if (currentLevel.equals("medium")) {
+        // Medium level interface
+        for (int i = 0; i < tilesY2; i++) {
+            for (int j = 0; j < tilesX2; j++) {
+                fill(gridColor2[i][j]);
+                rect(j * tileSizeX2 + offsetX2, i * tileSizeY2 + offsetY2, tileSizeX2, tileSizeY2);
+                //mark guiding tiles
+                if (j == 0 || j == tilesX2 - 1) {
+                    fill(0);
+                    circle(tileSizeX2 * j + offsetX2, tileSizeY2 * i + offsetY2, circleSize);
+                }
+            }
+        }
+        back.display2(); // return to homepage
+        if (isSolved("medium") == true) {
+            gameOver.display();
+            exit();
+        }
+
+    } else if (currentLevel.equals("mediumGoal")) {
+        // Goal of level medium
+        for (int i = 0; i < tilesY2; i++) {
+            for (int j = 0; j < tilesX2; j++) {
+                fill(randomColorGrid2[i][j]);
+                rect(j * tileSizeX2 + offsetX2, i * tileSizeY2 + offsetY2, tileSizeX2, tileSizeY2);
+                //mark guiding tiles
+                if (j == 0 || j == tilesX2 - 1) {
+                    fill(0);
+                    circle(tileSizeX2 * j + offsetX2, tileSizeY2 * i + offsetY2, circleSize);
+                }
+            }
+        }
+        back.display2(); // return to home page
+
+    } else if (currentLevel.equals("hard")) {
+        // Hard level interface
+        for (int i = 0; i < tilesY3; i++) {
+            for (int j = 0; j < tilesX3; j++) {
+                fill(gridColor3[i][j]);
+                rect(j * tileSizeX3 + offsetX3, i * tileSizeY3 + offsetY3, tileSizeX3, tileSizeY3);
+                //mark guiding tiles
+                if ((i == 0 && j == 0) || (i == 0 && j == tilesX3 - 1) || (i == tilesY3 - 1 && j == 0) || (i == tilesY3 - 1 && j == tilesX3 - 1)) {
+                    fill(0);
+                    circle(tileSizeX3 * j + offsetX3, tileSizeY3 * i + offsetY3, circleSize);
+                }
+            }
+        }
+        back.display2(); // return to home page
+        if (isSolved("hard") == true) {
+            gameOver.display();
+            exit();
+        }
+
+    } else if (currentLevel.equals("hardGoal")) {
+        // Goal of level hard
+        for (int i = 0; i < tilesY3; i++) {
+            for (int j = 0; j < tilesX3; j++) {
+                fill(randomColorGrid3[i][j]);
+                rect(j * tileSizeX3 + offsetX3, i * tileSizeY3 + offsetY3, tileSizeX3, tileSizeY3);
+                //mark guiding tiles
+                if ((i == 0 && j == 0) || (i == 0 && j == tilesX3 - 1) || (i == tilesY3 - 1 && j == 0) || (i == tilesY3 - 1 && j == tilesX3 - 1)) {
+                    fill(0);
+                    circle(tileSizeX3 * j + offsetX3, tileSizeY3 * i + offsetY3, circleSize);
+                }
+            }
+        }
+        back.display2(); // return to home page
+    }
 }
 
 void mouseClicked() {
-  // Check if a button is clicked
-  System.out.println("mousex is " + mouseX);
-  System.out.println("tileSizeX3 is " + tileSizeX1);
-  System.out.println("offsetX3 is " + offsetX1);
-  System.out.println(mouseX/tileSizeX1);
-  System.out.println(mouseY/tileSizeY1);
-  if (easyButton.isClicked() && buttonEnabled == true) {
-    currentLevel = "easy";
-    buttonEnabled = false;
-    
-  } else if (back.isClicked()) {
-      currentLevel = "home";
-      buttonEnabled = true;
-      
-  } else if (goalEasy.isClicked() && buttonEnabled == true) {
-      currentLevel = "easyGoal";
-      buttonEnabled = false;
-      
-  } else if (mediumButton.isClicked() && buttonEnabled == true) {
-      currentLevel = "medium";
-      buttonEnabled = false;
-      
-  } else if (goalMedium.isClicked() && buttonEnabled == true) {
-      currentLevel = "mediumGoal";
-      buttonEnabled = false;
-      
-  } else if (hardButton.isClicked() && buttonEnabled == true) {
-      currentLevel = "hard";
-      buttonEnabled = false;
-      
-  } else if (goalHard.isClicked() && buttonEnabled == true) {
-      currentLevel = "hardGoal";
-      buttonEnabled = false;
-      
-  } else if (currentLevel.equals("easy")){
-   if(mouseX/tileSizeX1 % 2 != 0){
-     if (isBlacktile == false){
-      oldBlackcolor = gridColor1[mouseY/tileSizeY1][mouseX/tileSizeX1];
-    gridColor1[mouseY/tileSizeY1][mouseX/tileSizeX1] = 0;
-    isBlacktile = true;
-    iBlack = mouseY/tileSizeY1;
-    jBlack = mouseX/tileSizeX1;
+    // Check if a button is clicked
+    System.out.println("mousex is " + mouseX);
+    System.out.println("tileSizeX3 is " + tileSizeX1);
+    System.out.println("offsetX3 is " + offsetX1);
+    System.out.println(mouseX / tileSizeX1);
+    System.out.println(mouseY / tileSizeY1);
+    if (easyButton.isClicked() && buttonEnabled == true) {
+        currentLevel = "easy";
+        buttonEnabled = false;
+
+    } else if (back.isClicked()) {
+        currentLevel = "home";
+        buttonEnabled = true;
+
+    } else if (goalEasy.isClicked() && buttonEnabled == true) {
+        currentLevel = "easyGoal";
+        buttonEnabled = false;
+
+    } else if (mediumButton.isClicked() && buttonEnabled == true) {
+        currentLevel = "medium";
+        buttonEnabled = false;
+
+    } else if (goalMedium.isClicked() && buttonEnabled == true) {
+        currentLevel = "mediumGoal";
+        buttonEnabled = false;
+
+    } else if (hardButton.isClicked() && buttonEnabled == true) {
+        currentLevel = "hard";
+        buttonEnabled = false;
+
+    } else if (goalHard.isClicked() && buttonEnabled == true) {
+        currentLevel = "hardGoal";
+        buttonEnabled = false;
+
     } else {
-      gridColor1[iBlack][jBlack] = gridColor1[mouseY/tileSizeY1][mouseX/tileSizeX1];
-      gridColor1[mouseY/tileSizeY1][mouseX/tileSizeX1] = oldBlackcolor;
-      isBlacktile = false;
-      count ++;
-   }
-  } 
- }
+        if (currentLevel.equals("easy")) {
+            if (mouseX / tileSizeX1 % 2 != 0) {
+                if (isBlacktile == false) {
+                    oldBlackcolor = gridColor1[mouseY / tileSizeY1][mouseX / tileSizeX1];
+                    gridColor1[mouseY / tileSizeY1][mouseX / tileSizeX1] = 0;
+                    isBlacktile = true;
+                    iBlack = mouseY / tileSizeY1;
+                    jBlack = mouseX / tileSizeX1;
+                } else {
+                    gridColor1[iBlack][jBlack] = gridColor1[mouseY / tileSizeY1][mouseX / tileSizeX1];
+                    gridColor1[mouseY / tileSizeY1][mouseX / tileSizeX1] = oldBlackcolor;
+                    isBlacktile = false;
+                    count++;
+                }
+            }
+
+        } else if (currentLevel.equals("medium")) {
+            if (mouseX / tileSizeX2 != 0 && mouseX / tileSizeX2 != tilesX2 - 1) {
+                if (isBlacktile == false) {
+                    oldBlackcolor = gridColor2[mouseY / tileSizeY2][mouseX / tileSizeX2];
+                    gridColor2[mouseY / tileSizeY2][mouseX / tileSizeX2] = 0;
+                    isBlacktile = true;
+                    iBlack = mouseY / tileSizeY2;
+                    jBlack = mouseX / tileSizeX2;
+                } else {
+                    gridColor2[iBlack][jBlack] = gridColor2[mouseY / tileSizeY2][mouseX / tileSizeX2];
+                    gridColor2[mouseY / tileSizeY2][mouseX / tileSizeX2] = oldBlackcolor;
+                    isBlacktile = false;
+                    count++;
+                }
+            }
+        } else if (currentLevel.equals("hard")) {
+            if (!((mouseY / tileSizeY3 == 0 && mouseX / tileSizeX3 == 0) || (mouseY / tileSizeY3 == 0 && mouseX / tileSizeX3 == tilesX3 - 1) || (mouseY / tileSizeY3 == tilesY3 - 1 && mouseX / tileSizeX3 == 0) || (mouseY / tileSizeY3 == tilesY3 - 1 && mouseX / tileSizeX3 == tilesX3 - 1))) {
+                if (isBlacktile == false) {
+                    oldBlackcolor = gridColor3[mouseY / tileSizeY3][mouseX / tileSizeX3];
+                    gridColor3[mouseY / tileSizeY3][mouseX / tileSizeX3] = 0;
+                    isBlacktile = true;
+                    iBlack = mouseY / tileSizeY3;
+                    jBlack = mouseX / tileSizeX3;
+                } else {
+                    gridColor3[iBlack][jBlack] = gridColor3[mouseY / tileSizeY3][mouseX / tileSizeX3];
+                    gridColor3[mouseY / tileSizeY3][mouseX / tileSizeX3] = oldBlackcolor;
+                    isBlacktile = false;
+                    count++;
+                }
+            }
+        }
+    }
 }
-  
 
 
 class Button {
-  float x, y;  // Position of the button
-  float w = 100, h = 50;  // Width and height of the button
-  String label;  // Text label for the button
-  
-  Button(float x, float y, String label) {
-    this.x = x;
-    this.y = y;
-    this.label = label;
-  }
-  
-  void display() {
-    // Draw the button
-    fill(255);
-    rectMode(CENTER);
-    rect(x, y, w, h);
-    
-    // Display the label
-    fill(0);
-    textSize(14);
-    textAlign(CENTER, CENTER);
-    text(label, x, y);
-  }
-   
-  void display2() {
-    // Draw the button
-    fill(255);
-    rectMode(CENTER);
-    rect(x, y, 50, 25);
-    
-    // Display the label
-    fill(0);
-    textSize(9);
-    textAlign(CENTER, CENTER);
-    text(label, x, y);
-  }
-  
-  boolean isClicked() {
-    // Check if the button is clicked
-    return mouseX >= x - w/2 && mouseX <= x + w/2 &&
-           mouseY >= y - h/2 && mouseY <= y + h/2;
-  }
-  
-// compare the current array with the goal array to see if everything matches
-// if it does then show the player that they successfully solved the puzzle and show count
-// else the boolean remains false and allow to continue swapping tiles
- 
-}
+    float x, y; // Position of the button
+    float w = 100, h = 50; // Width and height of the button
+    String label; // Text label for the button
 
-// void swapTiles()
-// count the number of moves used using a counter
-// if isSolved == false then: 
-// pick up tile on mouse click, hold that color in a variable : og
-  // then this tile now turns black
-// click on new tile and pick up that color in a variable : nx
-  // now this tile turns into the color of og
-  // the og tile that is black will now be filled with the color of nx
-  
-  
-//* when the player is in game play, they are allowed to go check the goal 
-// depending on whats easier, if the player looks at the goal, should they return to their mid way process or they have to restart (depends on whats easier to do)
+    Button(float x, float y, String label) {
+        this.x = x;
+        this.y = y;
+        this.label = label;
+    }
+
+    void display() {
+        // Draw the button
+        fill(255);
+        rectMode(CENTER);
+        rect(x, y, w, h);
+
+        // Display the label
+        fill(0);
+        textSize(14);
+        textAlign(CENTER, CENTER);
+        text(label, x, y);
+    }
+
+    void display2() {
+        // Draw the button
+        fill(255);
+        rectMode(CENTER);
+        rect(x, y, 50, 25);
+
+        // Display the label
+        fill(0);
+        textSize(9);
+        textAlign(CENTER, CENTER);
+        text(label, x, y);
+    }
+
+    boolean isClicked() {
+        // Check if the button is clicked
+        return mouseX >= x - w / 2 && mouseX <= x + w / 2 &&
+            mouseY >= y - h / 2 && mouseY <= y + h / 2;
+    }
+}
