@@ -1,2 +1,8 @@
-# final_project
-hello
+We are planning to code and recreate a mobile app game called “I Love Hue” using processing. In this game, you are first presented with a screen divided up into tiles of shapes (could be squares, triangles, or hexagons) with a gradient that is in ordered color, then the shapes are scrambled randomly which shuffles the tiles and disorganizes the gradient. Some of the tiles will be held in place for the player to use as a guide to fill out the gradient (these tiles are marked by a black dot at the center). The goal of the game is to restore the gradient by using the mouse to click on each tile/shape, moving it to the correct spot, clicking on the mouse pad again at the “would be” correct place and the two tiles will switch places. Until the gradient is restored correctly, then the player will have succeeded.
+
+To make the game more challenging, we can decrease the number of guiding tiles, decrease the differences in hues. (The smaller the difference between hues, the more challenging it is for the player to sort the tiles again.) 
+
+If possible, we would like to implement a counter that shows the number of steps used to complete the puzzle: the less steps used to solve the puzzle the better. We are planning to use RGB values or HEX code to check whether the tiles are in the correct gradient order.
+
+To play this game, you should click the run button. You will then be presented with 6 buttons. If you click any of the buttons on the top row: easy, medium, or hard, that will start the game play as you will be presented with the scrambled tiles. If you need a hint to what the final goals of each of the levels look like, click the corresponding button in the bottom row that displays the intended goal named: easy goal, medium goal, and hard goal. Your progress will be saved if you click the back button to switch between game play and hint. If the tiles are perfectly matched with the goal for each corresponding level, a “game over” message will appear and the game will automatically quit by itself. 
+
